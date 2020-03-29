@@ -1,0 +1,234 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace baseball_game
+{
+    class Program
+    {
+        static void Main(string[] args)//왜 한번하고 끝나지? count와 break쓰는법 다시 보기
+        {
+            int BBR3, BBR2, BBR1;    //야구게임 정답값
+            Random rd = new Random();
+            BBR3 = rd.Next(1, 9);
+            BBR2 = rd.Next(0, 9);
+            BBR1 = rd.Next(0, 9);
+            int BBI3, BBI2, BBI1;    //야구게임 입력값
+            int count = 10;
+            /*
+            while (true)//난수중복처리 중복이 있으면 안되나?
+            {
+                while (BBR3 == BBR2)
+                {
+                    BBR2 = rd.Next(0, 9);
+                }
+                while (BBR1 == BBR2 || BBR1 == BBR3)
+                {
+                    BBR1 = rd.Next(0, 9);
+
+                }
+                break;
+            }
+            */
+            //Console.WriteLine("{0}{1}{2}", BBR3, BBR2, BBR1);//하나의 랜덤값 rd로 여러곳에 쓸수있는지 확인하기위한것 (가능)
+            Console.Write("100의자리 숫자를 입력해주세요");
+            BBI3 = int.Parse(Console.ReadLine());
+            Console.Write("10의자리 숫자를 입력해주세요");
+            BBI2 = int.Parse(Console.ReadLine());
+            Console.Write("1의자리 숫자를 입력해주세요");
+            BBI1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("{0}{1}{2}", BBI3, BBI2, BBI1);//입력값이 제대로 들어갔는지 출력
+
+                while (count > 0)
+                {
+
+                    if (BBR3 == BBI3)
+                {
+                    Console.Write("S");
+                if (BBR2 == BBI2)
+                {
+                    Console.Write("S");
+                        if (BBR1 == BBI1)
+                        {
+                            Console.Write("S");
+                            Console.WriteLine("축하합니다!");
+                            break;
+                        }
+                        else if (BBR1 == BBI3 || BBR1 == BBI2)
+                        {
+                            Console.Write("B");
+                            break;  
+                        }
+                        else
+                        {
+                            Console.Write("O");
+                            break;
+                        }
+                    }
+                    else if (BBR2 == BBI1 || BBR2 == BBI3)
+                    {
+                        Console.Write("B");
+                        if (BBR1 == BBI1)
+                        {
+                            Console.Write("S");
+                            break;
+                        }
+                        else if (BBR1 == BBI3 || BBR1 == BBI2)
+                        {
+                            Console.Write("B");
+                        break;
+                        }
+                        else
+                        {
+                            Console.Write("O");
+                        break;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("O");
+                        if (BBR1 == BBI1)
+                        {
+                            Console.Write("S");
+                        break;
+                    }
+                        else if (BBR1 == BBI3 || BBR1 == BBI2)
+                        {
+                            Console.Write("B");
+                        break;
+                    }
+                        else
+                        {
+                            Console.Write("O");
+                        break;
+                    }
+                    }
+                }
+                    else if (BBR3 == BBI2 || BBR3 == BBI1)
+                    {
+                        Console.Write("B");
+                        if (BBR2 == BBI2)
+                        {
+                            Console.Write("S");
+                            if (BBR1 == BBI1)
+                            {
+                                Console.Write("S");
+                                break;
+                            }
+                            else if (BBR1 == BBI3 || BBR1 == BBI2)
+                            {
+                                Console.Write("B");
+                                break;
+                            }
+                            else
+                            {
+                                Console.Write("O");
+                                break;
+                            }
+                        }
+                        else if (BBR2 == BBI1 || BBR2 == BBI3)
+                        {
+                            Console.Write("B");
+                            if (BBR1 == BBI1)
+                            {
+                                Console.Write("S");
+                            break;
+                        }
+                            else if (BBR1 == BBI3 || BBR1 == BBI2)
+                            {
+                                Console.Write("B");
+                            break;
+                        }
+                            else
+                            {
+                                Console.Write("O");
+                            break;
+                        }
+                        }
+                        else
+                        {
+                            Console.Write("O");
+                            if (BBR1 == BBI1)
+                            {
+                                Console.Write("S");
+                            break;
+                        }
+                            else if (BBR1 == BBI3 || BBR1 == BBI2)
+                            {
+                                Console.Write("B");
+                            break;
+                        }
+                            else
+                            {
+                                Console.Write("O");
+                            break;
+                        }
+                        }
+                    }
+                    else
+                    {
+                    Console.Write("O");
+                        if (BBR2 == BBI2)
+                        {
+                            Console.Write("S");
+                            if (BBR1 == BBI1)
+                            {
+                                Console.Write("S");
+                            }
+                            else if (BBR1 == BBI3 || BBR1 == BBI2)
+                            {
+                                Console.Write("B");
+                                break;
+                            }
+                            else
+                            {
+                                Console.Write("O");
+                                break;
+                            }
+                        }
+                        else if (BBR2 == BBI1 || BBR2 == BBI3)
+                        {
+                            Console.Write("B");
+                            if (BBR1 == BBI1)
+                            {
+                                Console.Write("S");
+                            break;
+                        }
+                            else if (BBR1 == BBI3 || BBR1 == BBI2)
+                            {
+                                Console.Write("B");
+                            break;
+                        }
+                            else
+                            {
+                                Console.Write("O");
+                            break;
+                        }
+                        }
+                        else
+                        {
+                            Console.Write("O");
+                            if (BBR1 == BBI1)
+                            {
+                                Console.Write("S");
+                            break;
+                        }
+                            else if (BBR1 == BBI3 || BBR1 == BBI2)
+                            {
+                                Console.Write("B");
+                            break;
+                        }
+                            else
+                            {
+                                Console.Write("O");
+                            break;
+                        }
+                    }
+                }
+            count--;
+            }
+        }
+    }
+}
