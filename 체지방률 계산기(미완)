@@ -17,11 +17,11 @@ namespace day01_Quiz4_chejiper
             Console.WriteLine("{0}입력하셨습니다.",sex);//성별입력 제대로 되었는지 확인 조건문이 필요
             if(sex == 0)
             {
-                sv= 1.10f
+                sv= 1.10f;
             }
             else
             {
-                sv = 1.07f
+                sv = 1.07f;
             }
             string a, b;
             float weight, height, jejiper, jeji, chejiper;
