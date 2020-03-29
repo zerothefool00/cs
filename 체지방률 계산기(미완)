@@ -10,15 +10,19 @@ namespace day01_Quiz4_chejiper
     {
         static void Main(string[] args)
         {
-            /*
-            string c;
             int sex;
+            float sv;
             Console.Write("남성이면 0, 여성이면 1을 입력하세요.");
-            c = Console.ReadLine();
-            sex = Convert.ToInt32(c);
+            sex = int.Parse(Console.ReadLine());
             Console.WriteLine("{0}입력하셨습니다.",sex);//성별입력 제대로 되었는지 확인 조건문이 필요
-            */
-            //남성 체지방률 구하는법
+            if(sex == 0)
+            {
+                sv= 1.10f
+            }
+            else
+            {
+                sv = 1.07f
+            }
             string a, b;
             float weight, height, jejiper, jeji, chejiper;
             Console.Write("체중(kg)을 입력하세요. ");
@@ -29,33 +33,15 @@ namespace day01_Quiz4_chejiper
             b = Console.ReadLine();
             height = float.Parse(b);
             //Console.WriteLine("{0}cm", height); //제대로 변환되는지 확인
-            jeji = (1.10f * weight) - (128f * (weight * weight) / (height * height));
+            jeji = (sv * weight) - (128f * (weight * weight) / (height * height));
             //Console.WriteLine("제지방량{0}", jeji); //제대로 변환되는지 확인
             jejiper = (jeji * 100) / weight;
             //Console.WriteLine("제지방률{0}", jejiper); //제대로 변환되는지 확인
             chejiper = 100 - jejiper;
-            Console.WriteLine("체지방률{0}%", chejiper); //제대로 변환되는지 확인
-            //질문 : 나누기는 몫만 나오는거고 나머지는 버리는건지?
-            //남성 여성 성별로 나눌수도 있지 않을까?
-
-            //여성체지방률 구하는법
-            string fa, fb;
-            float fweight, fheight, fjejiper, fjeji, fchejiper;
-            Console.Write("체중(kg)을 입력하세요. ");
-            fa = Console.ReadLine();
-            fweight = float.Parse(a);
-            //Console.WriteLine("{0}kg", fweight); //제대로 변환되는지 확인
-            Console.Write("키(cm)를 입력하세요. ");
-            fb = Console.ReadLine();
-            fheight = float.Parse(b);
-            //Console.WriteLine("{0}cm", fheight); //제대로 변환되는지 확인
-            fjeji = (1.07f * fweight) - (128f * (fweight * fweight) / (fheight * fheight));
-            //Console.WriteLine("제지방량{0}", jeji); //제대로 변환되는지 확인
-            fjejiper = (fjeji * 100) / fweight;
-            //Console.WriteLine("제지방률{0}", jejiper); //제대로 변환되는지 확인
-            fchejiper = 100 - fjejiper;
-            Console.WriteLine("체지방률{0}%", fchejiper); //제대로 변환되는지 확인
-            //남자와 여자의 체지방률 구하기 차이는 제지의 1.10과 1.07의 차이뿐인데 이렇게 코드를 길게 늘여 써야 하는가?
+            Console.WriteLine("체지방률{0:F}%", chejiper); //제대로 변환되는지 확인
+            //질문 : 나누기는 몫만 나오는거고 나머지는 버리는건지? 해결 :f
+            //남성 여성 성별로 나눌수도 있지 않을까? 해결sex라는 새로운 변수  
+            //남자와 여자의 체지방률 구하기 차이는 제지의 1.10과 1.07의 차이뿐인데 이렇게 코드를 길게 늘여 써야 하는가? sv라는 새로운 변수 수치만 바꿈
         }
     }
 }
