@@ -1,0 +1,73 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player_Control : MonoBehaviour
+{
+    public int Life = 3;
+    float dir_x, dir_z, dir_x2, dir_z2;
+    float moverate = 0;
+    public Transform bullet; //총알객체 정보를 받음
+    public Transform firepoint; //발사위치 정보를 받음
+    Rigidbody rig;
+    enum JumpState { jump, Nojump }
+    JumpState is_jump;
+    
+    //public Transform firepoint2; //플레이어 모두에게 쓸모없는 객체가 하나씩 추가됨
+    // Start is called before the first frame update
+    // Update is called once per frame
+    void Update()
+    {
+        CharMove();
+        Fire_bullet();
+        CharJump();
+    }
+    void CharMove()
+    {
+
+        if (this.gameObject.name == "Player")
+        {
+            dir_x = Input.GetAxis("Horizontal");
+            dir_z = Input.GetAxis("Vertical");
+        }
+        if (this.gameObject.name == "Player2")
+        {
+            dir_x2 = Input.GetAxis("Horizontal2");
+            dir_z2 = Input.GetAxis("Vertical2");
+        }
+        moverate = 3 * Time.deltaTime;
+        this.transform.Translate(Vector3.forward * moverate * dir_z);
+        this.transform.Rotate(Vector3.up * moverate * 40 * dir_x);
+        this.transform.Translate(Vector3.forward * moverate * dir_z2);
+        this.transform.Rotate(Vector3.up * moverate * 40 * dir_x2);
+    }
+    void Fire_bullet()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) == true && this.gameObject.name == "Player")
+        {
+            //총알을 만들고 물리적용 발사(자료형필요)
+            Transform temp = Instantiate(bullet, firepoint.position, firepoint.rotation);
+            temp.GetComponent<Rigidbody>().AddForce(firepoint.forward * 10f, ForceMode.Impulse);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl) == true && this.gameObject.name == "Player2")
+        {
+            //총알을 만들고 물리적용 발사(자료형필요)
+            Transform temp2 = Instantiate(bullet, firepoint.position, firepoint.rotation);
+            temp2.GetComponent<Rigidbody>().AddForce(firepoint.forward * 10f, ForceMode.Impulse);
+        }
+
+    }
+    void CharJump()
+    {
+        rig = this.GetComponent<Rigidbody>();
+        float jump = Input.GetAxis("Jump");
+        switch (is_jump)
+        {
+            case JumpState.jump:
+                this.rig.AddForce(Vector3.up * jump * 350f, ForceMode.Force);
+                break;
+            case JumpState.Nojump:
+                break;
+        }
+    }
+}
